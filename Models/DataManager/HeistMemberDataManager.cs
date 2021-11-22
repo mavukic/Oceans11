@@ -1,4 +1,5 @@
-﻿using Oceans11.DataRepository;
+﻿using Microsoft.EntityFrameworkCore;
+using Oceans11.DataRepository;
 using Oceans11.Models.DTO;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,7 +38,7 @@ namespace Oceans11.Models.DataManager
         IEnumerable<HeistMember> IDataRepository<HeistMember, HeistMemberDTO>.GetAll()
         {
 
-            throw new System.NotImplementedException();
+            return _context.HeistMembers.Include(p=>p.MemberSkills).ToList();
         }
 
         HeistMemberDTO IDataRepository<HeistMember, HeistMemberDTO>.GetDto(long id)

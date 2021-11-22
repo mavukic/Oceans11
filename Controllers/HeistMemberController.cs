@@ -27,7 +27,7 @@ namespace Oceans11.Controllers
         [HttpGet("{id}", Name = "GetAuthor")]
         public IActionResult Get(int id)
         {
-            var author = _dataRepository.GetDto(id);
+            var author = _dataRepository.Get(id);
             if (author == null)
             {
                 return NotFound("Author not found.");
